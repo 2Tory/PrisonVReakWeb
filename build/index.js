@@ -56,7 +56,7 @@ var RenderStreaming = /** @class */ (function () {
             if (Array.isArray(argv)) {
                 program
                     .usage('[options] <apps...>')
-                    .option('-p, --port <n>', 'Port to start the server on.', process.env.PORT || "80")
+                    .option('-p, --port <n>', 'Port to start the server on.', process.env.PORT || "8080")
                     .option('-s, --secure', 'Enable HTTPS (you need server.key and server.cert).', process.env.SECURE || false)
                     .option('-k, --keyfile <path>', 'https key file.', process.env.KEYFILE || 'server.key')
                     .option('-c, --certfile <path>', 'https cert file.', process.env.CERTFILE || 'server.cert')
