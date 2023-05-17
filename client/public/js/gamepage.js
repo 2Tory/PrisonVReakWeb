@@ -27,10 +27,6 @@ window.document.oncontextmenu = function () {
   return false;     // cancel default menu
 };
 
-window.addEventListener('resize', function () {
-  videoPlayer.resizeVideo();
-}, true);
-
 window.addEventListener('beforeunload', async () => {
   if(!renderstreaming)
     return;
@@ -47,7 +43,7 @@ async function setup() {
 
 function showWarningIfNeeded(startupMode) {
   const warningDiv = document.getElementById("warning");
-  if (startupMode == "private") {
+  if (startupMode === "private") {
     warningDiv.innerHTML = "<h4>Warning</h4> This sample is not working on Private Mode.";
     warningDiv.hidden = false;
   }
@@ -88,8 +84,7 @@ async function setupRenderStreaming() {
 }
 
 function onConnect() {
-  const channel = renderstreaming.createDataChannel("input");
-  videoPlayer.setupInput(channel);
+  renderstreaming.createDataChannel();
   showStatsMessage();
 }
 
@@ -100,7 +95,6 @@ async function onDisconnect(connectionId) {
 
   await renderstreaming.stop();
   renderstreaming = null;
-  videoPlayer.deletePlayer();
   if (supportsSetCodecPreferences) {
     codecPreferences.disabled = false;
   }
@@ -124,7 +118,7 @@ function setCodecPreferences() {
   if (selectedCodecs == null) {
     return;
   }
-  const transceivers = renderstreaming.getTransceivers().filter(t => t.receiver.track.kind == "video");
+  const transceivers = renderstreaming.getTransceivers().filter(t => t.receiver.track.kind === "video");
   if (transceivers && transceivers.length > 0) {
     transceivers.forEach(t => t.setCodecPreferences(selectedCodecs));
   }

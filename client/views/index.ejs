@@ -6,14 +6,16 @@
 
   </head>
   <body>
-    <%- include('header')%>
-    <div id="container">
-      <div class="content">
-        <div id="startup"></div>
-        <a href="/game">play</a>
+      <div id="wrap">
+        <%- include('layout/header')%>
+        <div id="container">
+          <div id="content">
+            <div id="startup"></div>
+            <a href="/game">play</a>
+          </div>
+        </div>
+        <%- include('layout/footer') %>
+        <script type="module" src="js/main.js"></script>
       </div>
-    </div>
-    <%- include('footer') %>
-    <script type="module" src="js/main.js"></script>
   </body>
 </html>

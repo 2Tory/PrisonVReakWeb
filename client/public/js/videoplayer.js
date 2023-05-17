@@ -9,7 +9,7 @@ export class VideoPlayer {
 
   /**
  * @param {Element} playerElement parent element for create video player
- * @param {HTMLInputElement} lockMouseCheck use checked propety for lock mouse 
+ * @param {HTMLInputElement} lockMouseCheck use checked propety for lock mouse
  */
   createPlayer(playerElement, lockMouseCheck) {
     this.playerElement = playerElement;
@@ -84,12 +84,6 @@ export class VideoPlayer {
     }
   }
 
-  _mouseMove(event) {
-    // Forward mouseMove event of fullscreen player directly to sender
-    // This is required, as the regular mousemove event doesn't fire when in fullscreen mode
-    this.sender._onMouseEvent(event);
-  }
-
   _mouseClick() {
     // Restores pointer lock when we unfocus the player and click on it again
     if (this.lockMouseCheck.checked) {
@@ -113,7 +107,7 @@ export class VideoPlayer {
   }
 
   /**
-   * @param {MediaStreamTrack} track 
+   * @param {MediaStreamTrack} track
    */
   addTrack(track) {
     if (!this.videoElement.srcObject) {

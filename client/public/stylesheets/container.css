@@ -1,25 +1,27 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+#wrap{
+    min-width: 1700px;
 }
 
 #container{
-  position: fixed;
-  width:100%;
-  height: 75%;
-  top:70px;
-  left:0;
-  display: block;
+    position: relative;
+    width:100%;
+    height: 75%;
+    display: block;
 }
 
-.content{
-  position: relative;
-  width: 1570px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 30px;
+#content{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 30px;
+    min-height: 1080px;
 }

@@ -8,10 +8,8 @@ a{
     text-decoration: none;
 }
 #header {
-    position: fixed;
+    position: relative;
     width:100%;
-    top:0;
-    left:0;
     z-index: 20;
     background-color: rgba(0, 0, 0, 1);
     height: 70px;
@@ -20,7 +18,7 @@ a{
 
 .group_flex{
     position: relative;
-    width: 1600px;
+    width: 90%;
     height: 100%;
     margin: 0 auto;
     padding: 0 30px;
@@ -28,7 +26,6 @@ a{
 .main_logo{
     position: absolute;
     margin-top: 5px;
-    margin-left: 10px;
 }
 
 .main_logo img{

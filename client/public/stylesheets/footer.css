@@ -8,19 +8,17 @@ a{
     text-decoration: none;
 }
 #footer {
-    position: fixed;
+    position: relative;
     width:100%;
-    bottom:0;
-    left:0;
     z-index: 20;
     background-color: rgba(0, 0, 0, 1);
-    height: 20%;
+    height: 300px;
     display: block;
 }
 
 .footer_flex{
     position: relative;
-    width: 1600px;
+    width: 90%;
     height: 100%;
     margin: 0 auto;
     padding: 10px 30px;

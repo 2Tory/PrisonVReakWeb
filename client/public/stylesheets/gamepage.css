@@ -1,43 +1,87 @@
 body {
-  margin: 0px;
+    margin: 0;
 }
-
+#cctv_btn{
+    display: inline-block;
+    width: 45%;
+    margin-top: 100px;
+    float: left;
+}
+#cctv_btn ul{
+    padding: 0;
+    text-align: center;
+}
+#cctv_btn li{
+    display: inline-block;
+    width: 18%;
+    min-width: 130px;
+    margin-top: 30px;
+}
+.cctv_btn {
+    padding: 10px 20px;
+    width: 70%;
+    height: 60px;
+}
+#both{
+    clear: both;
+}
+#playManual{
+    width: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    float: right;
+    min-height: 800px;
+    border: 2px solid red;
+}
+#playerField{
+    position: relative;
+    display: inline-block;
+    width: 45%;
+    height: 0;
+    padding-bottom: 25%;
+    float: left;
+}
 #player {
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: #323232;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #323232;
+
 }
 
 #player:before {
-  content: "";
-  display: block;
-  padding-top: 66%;
+    content: "";
+    display: block;
+    padding-top: 66%;
 }
 
 #playButton {
-  width: 15%;
-  max-width: 200px;
-  cursor: pointer;
+    width: 15%;
+    max-width: 200px;
+    cursor: pointer;
 }
 
 #Video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #fullscreenButton {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 32px;
-  height: 32px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 32px;
+    height: 32px;
+}
+
+#box{
+    display: none;
 }

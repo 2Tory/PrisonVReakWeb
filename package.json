@@ -3,12 +3,7 @@
   "version": "3.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "test": "jest --colors test/*.ts",
-    "newman": "newman run test/renderstreaming.postman_collection.json",
     "start": "node ./build/index.js",
-    "dev": "ts-node ./src/index.ts",
-    "lint": "eslint src/**/*.ts test/**/*.ts",
     "pack": "pkg ."
   },
   "dependencies": {
@@ -26,17 +21,10 @@
   },
   "devDependencies": {
     "@jest-mock/express": "^2.0.1",
-    "@types/jest": "^29.0.0",
     "@types/morgan": "^1.9.3",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
     "cookie-parser": "~1.4.4",
     "ejs": "^3.1.9",
-    "eslint": "^8.23.0",
-    "eslint-plugin-jest": "^27.0.1",
     "http-errors": "~1.6.3",
-    "jest": "^29.0.2",
-    "jest-websocket-mock": "^2.4.0",
     "mock-socket": "^9.1.5",
     "newman": "^5.3.2",
     "pkg": "^5.8.0",

@@ -1,55 +1,69 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ko">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="stylesheets/container.css" />
+      <link rel="stylesheet" href="stylesheets/gamepage.css" />
+      <title>Receiver Sample</title>
+    </head>
+    <body>
+        <div id="wrap">
+          <%- include('layout/header')%>
+          <div id="container">
+              <div id="content">
+                  <!-- 필요 없지만 gamepage.js 에서 쓰긴 하기 때문에 안보이게만 해둠 사실 다 없어도 되는데..
+                        지우기 귀찮음.. 뭐가 박살날지 모름.. -->
+                  <div id="box">
+                      <div id="warning" hidden="true"></div>
+                      <div>
+                          <span>Codec preferences:</span>
+                          <select id="codecPreferences" autocomplete="off" disabled>
+                              <option selected value="">Default</option>
+                          </select>
+                      </div>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="stylesheets/container.css" />
-  <link rel="stylesheet" href="stylesheets/gamepage.css" />
-  <title>Receiver Sample</title>
-</head>
+                      <div>
+                          <span>Lock Cursor to Player:</span>
+                          <input type="checkbox" id="lockMouseCheck" autocomplete="off" />
+                      </div>
 
-<body>
-  <%- include('header')%>
-  <div id="container">
-    <h1>Receiver Sample</h1>
+                      <p>
+                          For more information about sample, see
+                          <a href="https://docs.unity3d.com/Packages/com.unity.renderstreaming@3.1/manual/sample-broadcast.html">Broadcast sample</a> document page.
+                      </p>
 
-    <div id="warning" hidden="true"></div>
+                      <div id="message"></div>
 
-    <div id="player"></div>
-
-    <div class="box">
-      <span>Codec preferences:</span>
-      <select id="codecPreferences" autocomplete="off" disabled>
-        <option selected value="">Default</option>
-      </select>
-    </div>
-
-    <div class="box">
-      <span>Lock Cursor to Player:</span>
-      <input type="checkbox" id="lockMouseCheck" autocomplete="off" />
-    </div>
-
-    <p>
-      For more information about sample, see
-        <a href="https://docs.unity3d.com/Packages/com.unity.renderstreaming@3.1/manual/sample-broadcast.html">Broadcast sample</a> document page.
-    </p>
-
-    <div id="message"></div>
-
-    <section>
-      <a href="https://github.com/Unity-Technologies/UnityRenderStreaming/tree/develop/WebApp/client/public/receiver"
-        title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-    </section>
-  </div>
-
-  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <script src="https://unpkg.com/event-target@latest/min.js"></script>
-  <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.global.js"></script>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
-  <script type="module" src="js/gamepage.js"></script>
-  <%- include('footer')%>
-
-</body>
-
+                      <section>
+                          <a href="https://github.com/Unity-Technologies/UnityRenderStreaming/tree/develop/WebApp/client/public/receiver"
+                             title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+                      </section>
+                  </div>
+                  <div id="playerField">
+                    <div id="player"></div>
+                  </div>
+                  <div id="playManual">
+                      <h1>메뉴얼 공간~</h1>
+                  </div>
+                  <div id="cctv_btn">
+                      <ul>
+                          <li><input type="button" value="CCTV-1" class="cctv_btn"></li>
+                          <li><input type="button" value="CCTV-2" class="cctv_btn"></li>
+                          <li><input type="button" value="CCTV-3" class="cctv_btn"></li>
+                          <li><input type="button" value="CCTV-4" class="cctv_btn"></li>
+                          <li><input type="button" value="CCTV-5" class="cctv_btn"></li>
+                      </ul>
+                  </div>
+                  <p id="both"></p>
+              </div>
+          </div>
+          <%- include('layout/footer')%>
+          <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+          <script src="https://unpkg.com/event-target@latest/min.js"></script>
+          <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.global.js"></script>
+          <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+          <script type="module" src="js/gamepage.js"></script>
+        </div>
+    </body>
 </html>

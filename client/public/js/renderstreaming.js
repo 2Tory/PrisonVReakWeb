@@ -34,7 +34,7 @@ export class RenderStreaming {
 
   async _onConnect(e) {
     const data = e.detail;
-    if (this._connectionId == data.connectionId) {
+    if (this._connectionId === data.connectionId) {
       this._preparePeerConnection(this._connectionId, data.polite);
       this.onConnect(data.connectionId);
     }
@@ -42,7 +42,7 @@ export class RenderStreaming {
 
   async _onDisconnect(e) {
     const data = e.detail;
-    if (this._connectionId == data.connectionId) {
+    if (this._connectionId === data.connectionId) {
       this.onDisconnect(data.connectionId);
       if (this._peer) {
         this._peer.close();
