@@ -1,4 +1,4 @@
-import * as Config from "./config.js";
+import * as Config from "../config/config.js";
 
 const startupDiv = document.getElementById("startup");
 startupDiv.innerHTML = "<h3>Server Configuration</h3>";

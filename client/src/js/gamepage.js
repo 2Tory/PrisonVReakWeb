@@ -1,8 +1,9 @@
-import { getServerConfig, getRTCConfiguration } from "./config.js";
-import { createDisplayStringArray } from "./stats.js";
-import { VideoPlayer } from "./videoplayer.js";
-import { RenderStreaming } from "./renderstreaming.js";
-import { Signaling, WebSocketSignaling } from "./signaling.js";
+import { getServerConfig, getRTCConfiguration } from "../config/config.js";
+import { createDisplayStringArray } from "../config/stats.js";
+import { VideoPlayer } from "../config/videoplayer.js";
+import { RenderStreaming } from "../config/renderstreaming.js";
+import { Signaling, WebSocketSignaling } from "../config/signaling.js";
+import {sendClickEvent} from "../config/register-events.js";
 
 /** @type {Element} */
 let playButton;
@@ -53,7 +54,7 @@ function showPlayButton() {
   if (!document.getElementById('playButton')) {
     const elementPlayButton = document.createElement('img');
     elementPlayButton.id = 'playButton';
-    elementPlayButton.src = '../../images/Play.png';
+    elementPlayButton.src = 'images/Play.png';
     elementPlayButton.alt = 'Start Streaming';
     playButton = document.getElementById('player').appendChild(elementPlayButton);
     playButton.addEventListener('click', onClickPlayButton);
@@ -65,7 +66,38 @@ function onClickPlayButton() {
 
   // add video player
   videoPlayer.createPlayer(playerDiv, lockMouseCheck);
+  videoPlayer.setupConnection(useWebSocket);
   setupRenderStreaming();
+
+  const cctv_1 = document.getElementById('CCTV-1');
+  // playerDiv.appendChild(cctv_1);
+  cctv_1.addEventListener("click", function () {
+    sendClickEvent(videoPlayer, 1);
+  });
+
+  const cctv_2 = document.getElementById('CCTV-2');
+  // playerDiv.appendChild(cctv_2);
+  cctv_2.addEventListener("click", function () {
+    sendClickEvent(videoPlayer, 2);
+  });
+
+  const cctv_3= document.getElementById('CCTV-3');
+  // playerDiv.appendChild(cctv_3);
+  cctv_3.addEventListener("click", function () {
+    sendClickEvent(videoPlayer, 3);
+  });
+
+  const cctv_4= document.getElementById('CCTV-4');
+  // playerDiv.appendChild(cctv_4);
+  cctv_4.addEventListener("click", function () {
+    sendClickEvent(videoPlayer, 4);
+  });
+
+  const cctv_5= document.getElementById('CCTV-5');
+  // playerDiv.appendChild(cctv_5);
+  cctv_5.addEventListener("click", function () {
+    sendClickEvent(videoPlayer, 5);
+  });
 }
 
 async function setupRenderStreaming() {
