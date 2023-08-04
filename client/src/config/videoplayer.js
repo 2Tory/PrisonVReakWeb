@@ -40,16 +40,7 @@ export class VideoPlayer {
     this.videoElement.addEventListener('loadedmetadata', this._onLoadedVideo.bind(this), true);
     this.playerElement.appendChild(this.videoElement);
 
-    // add fullscreen button
-    this.fullScreenButtonElement = document.createElement('img');
-    this.fullScreenButtonElement.id = 'fullscreenButton';
-    this.fullScreenButtonElement.src = 'images/FullScreen.png';
-    this.fullScreenButtonElement.addEventListener("click", this._onClickFullscreenButton.bind(this));
-    this.playerElement.appendChild(this.fullScreenButtonElement);
 
-    document.addEventListener('webkitfullscreenchange', this._onFullscreenChange.bind(this));
-    document.addEventListener('fullscreenchange', this._onFullscreenChange.bind(this));
-    this.videoElement.addEventListener("click", this._mouseClick.bind(this), false);
   }
 
   _onLoadedVideo() {

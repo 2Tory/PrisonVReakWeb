@@ -1,21 +1,103 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>PrisonVReak</title>
-    <link rel='stylesheet' href='css/container.css' />
+<html lang="en">
 
-  </head>
-  <body>
-      <div id="wrap">
-        <%- include('partials/header')%>
-        <div id="container">
-          <div id="content">
-            <div id="startup"></div>
-            <a href="/game">play</a>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+
+    ** index 해결해야할 점 **
+    #1. 유튜브, VR Download 컨텐츠 화면 비율이 줄어들어도 픽스되게. absolute 때문에 그러는 거 같은데 다른 방법 찾는 게 나을 듯
+
+    #2. VR Download를 다른 컨텐츠로 바꿔야 함. (Download 창 안 만든다고 했으니까...)
+    #3. index의 공지사항, 커뮤니티가 꽤나 비루함. 레이아웃 새로 설정해야할 거 같음. (새 디자인) --일단 보류--
+
+    #4. 애니메이션, 세부적인 요소는 추후 추가하는 것으로
+    #5. logo를 바꿔야겠다.
+
+  -->
+
+  <!--글꼴 Link-->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
+
+  <!-- JavaScript -->
+  <script src="/javascript/index.js"></script>
+
+  <!-- 반응형 웹 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Title-->
+  <title> CAN </title>
+
+</head>
+
+<body>
+
+  <!-- header -->
+  <%- include('partials/header')%>
+  <!-- 전체 Section -->`
+  <section id="section">
+
+    <!-- 첫 번째 그리드 -->
+    <div id="firstSection">
+      <div id="firstGrid">
+          <img id="pvLogo" src="/img/prisonVreak.png">
+          <button class="btn" onclick="location.href='/game'"> PLAY </button>
+
+            <!-- youtube -->
+            <iframe id="youtube" width="860" height="420" src="https://www.youtube.com/embed/5R9245kbwMs"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              style="box-shadow: 10px 10px 10px #000;"
+            ></iframe>
+
         </div>
-        <%- include('partials/footer') %>
-        <script type="module" src="module/js/main.js"></script>
+    </div>
+
+    <!-- 두 번째 그리드 -->
+    <div id="secondSection">
+      <div id="secondGrid">
+        <img class="gameInfo" src="/img/gameInfo.png">
+        <img class="gameInfo" src="/img/gameInfo.png">
+        <img class="gameInfo" src="/img/gameInfo.png">
       </div>
-  </body>
+
+      <!-- vrVersion IMG -->
+      <div id="vrVersion">
+        <img src="/img/vrVersion.png">
+      </div>
+      <div class="vrVersion">
+        <!-- vrVersion img 시험 중 -->
+      </div>
+    </div>
+
+    <!-- 세 번째 그리드 -->
+    <div id="thirdSection">
+
+      <div class="thirdGrid" id="thFirst">
+        <h1> 공지사항 </h1>
+        <img src="/img/gameInfo.png">
+      </div>
+
+      <div class="thirdGrid" id="thSecond">
+        <h1> 커뮤니티 </h1>
+        <img src="/img/gameInfo.png">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- footer -->
+  <%- include('partials/footer')%>
+</body>
+
 </html>

@@ -1,25 +1,45 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createServer = void 0;
-var createError = require('http-errors');
 var express = require("express");
+const session = require('express-session');
 var path = require("path");
 var morgan = require("morgan");
 var signaling_1 = require("./signaling");
 var httphandler_1 = require("./class/httphandler");
-var users_1 = require("../client/routes/users");
+const passport = require('passport');
+const bodyParser = require('body-parser');
 var index_1 = require("../client/routes/index");
+
+const authController = require('../client/controllers/authController');
+const mainRouter = require('../client/routes/auth');
+const authCheck = require('../client/middleware/authCheck');
+const postRouter = require('../client/routes/post');
+
 var cors = require('cors');
 var createServer = function (config) {
     var app = express();
     (0, httphandler_1.reset)(config.mode);
-    // logging http access
-    if (config.logging != "none") {
-        app.use(morgan(config.logging));
-    }
     app.set('views', path.join(__dirname, '../client/views'));
     app.set('view engine', 'ejs');
     app.engine('html', require('ejs').renderFile);
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    app.use(session({
+      secret: 'aaaa@aaaa', // 원하는 문자 입력
+      resave: false,
+      saveUninitialized: true,
+    }));
+
+    // Passport 및 세션 미들웨어 초기화
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // 인증 라우터
+    app.use('/auth', mainRouter);
+    app.use('/', postRouter);
+
     // const signal = require('./signaling');
     app.use(cors({ origin: '*' }));
     app.use(express.urlencoded({ extended: true }));
@@ -27,22 +47,11 @@ var createServer = function (config) {
     app.get('/config', function (req, res) { return res.json({ useWebSocket: config.type == 'websocket', startupMode: config.mode, logging: config.logging }); });
     app.use('/signaling', signaling_1.default);
     app.use(express.static(path.join(__dirname, '../client/public')));
-    app.use('/module', express.static(path.join(__dirname, '../client/src')));
+    app.use('/partials', express.static(path.join(__dirname, '../client/views/partials')));
     app.use('/', index_1);
-    app.use('/users', users_1);
-    // catch 404 and forward to error handler
-    app.use(function (req, res, next) {
-        next(createError(404));
-    });
-    // error handler
-    app.use(function (err, req, res, next) {
-        // set locals, only providing error in development
-        res.locals.message = err.message;
-        res.locals.error = req.app.get('env') === 'development' ? err : {};
-        // render the error page
-        res.status(err.status || 500);
-        res.render('error');
-    });
+
+
+
     return app;
 };
 exports.createServer = createServer;

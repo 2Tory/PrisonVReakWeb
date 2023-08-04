@@ -1,5 +1,2 @@
-/src/
 node_modules/
-tsconfig.build.json
-tsconfig.json
-tsconfig.lint.json
+**config/db.js

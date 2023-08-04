@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--글꼴 Link-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/commuEdit.css">
+
+    <!-- JavaScript -->
+    <script src="/javascript/index.js"></script>
+    <!-- 반응형 웹 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Title-->
+  <title> CAN </title>
+
+</head>
+
+<body>
+<!-- header -->
+<%- include('partials/header')%>
+    <!-- Section -->
+<section id="section">
+    <div id="layout">
+        <div id="sectionTitle">
+            <h1> 글 수정 </h1>
+            <hr>
+        </div>
+
+        <form id="form" action="" method="">
+            <div id="titleForm" class="form">
+                <h4> 제목 </h4>
+                <input type="text" name="post_title" id="post_title" placeholder="제목을 입력해 주세요"
+                    value="<%= data.post_title %>" class="form-control" required>
+            </div>
+
+            <div id="contentForm" class="form">
+                <h4> 내용 </h4>
+                <textarea name="post_content" id="post_content" class="form-control" rows="5"
+                    required><%= data.post_content %></textarea>
+            </div>
+
+            <div id="tagForm" class="form">
+                <h4> 태그 </h4>
+                <input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
+            </div>
+            <br>
+            <div style="display: flex; justify-content: center; ">
+
+                <div class="btn">
+                    <input type="button" data-action="edit" value="수정하기" class="custom-btn btn-16" onclick="submitForm('edit')">
+                </div>
+                <div class="btn">
+                    <input type="button" data-action="delete" value="삭제하기" class="custom-btn btn-16" onclick="submitForm('delete')">
+                </div>
+            </div>
+
+            <!-- 액션 타입을 전달할 input 태그 추가 -->
+            <input type="hidden" name="actionType" id="actionType" value="">
+        </form>
+
+    </div>
+</section>
+
+<script>
+    function submitForm(actionType) {
+        const form = document.getElementById("form");
+        const actionTypeField = document.getElementById("actionType");
+
+        if (actionType === "edit") {
+            form.setAttribute("method", "post");
+            form.action = "/community/edit/<%= data.post_num %>";
+        } else if (actionType === "delete") {
+            form.setAttribute("method", "get");
+            form.action = "/community/delete/<%= data.post_num %>";
+        }
+
+        // 액션타입 값을 히든 필드에 설정
+        actionTypeField.value = actionType;
+
+        // 폼 제출
+        form.submit();
+    }
+</script>
+
+<!-- footer -->
+<%- include('partials/footer')%>
+</body>
+
+
+</html>
